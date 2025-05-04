@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pos/screens/create_customer_screen.dart'; // Adjust the import as necessary
 
 class AddCustomerScreen extends StatelessWidget {
-  const AddCustomerScreen({Key? key}) : super(key: key);
+  const AddCustomerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
