@@ -26,8 +26,21 @@ class AllItemsScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.search, color: Colors.white),
             onPressed: () {
-              // Implement search logic here
-
+              // Implement search functionality here
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Search'),
+                  content: TextField(
+                    decoration: const InputDecoration(hintText: 'Search items...'),
+                    onSubmitted: (value) {
+                      // Handle search action
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              );
+              
 
             },
           ),

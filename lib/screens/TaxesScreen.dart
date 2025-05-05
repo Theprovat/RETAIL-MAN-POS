@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pos/screens/CreateTaxScreen.dart';
 
 class TaxesScreen extends StatelessWidget {
   const TaxesScreen({super.key});
@@ -47,13 +48,17 @@ class TaxesScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.add),
-        onPressed: () {
-          // Handle adding a new tax
-        },
-      ),
+     floatingActionButton: FloatingActionButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const CreateTaxScreen()),
+    );
+  },
+  backgroundColor: Colors.green,
+  child: const Icon(Icons.add),
+),
+
     );
   }
 }

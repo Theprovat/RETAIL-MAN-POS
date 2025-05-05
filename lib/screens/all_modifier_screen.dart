@@ -16,6 +16,14 @@ class AllModifierScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text("Modifiers", style: TextStyle(color: Colors.white)),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: Colors.white),
+            onPressed: () {
+              // Implement search logic here
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(

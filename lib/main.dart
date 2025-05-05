@@ -1,6 +1,7 @@
+// main.dart
 import 'package:flutter/material.dart';
-import 'package:pos/screens/registration_screen.dart';
-import 'package:pos/screens/sign_in_screen.dart';
+import 'screens/registration_screen.dart';
+import 'screens/sign_in_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,28 +37,13 @@ class RegistrationSignInScreen extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Container(
-              color: Colors.blue,
+              color: Colors.white,
               child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const SizedBox(height: 16.0),
-                    const Text(
-                      'RETAIL MAN POS',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'POINT OF SALE',
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                  ],
+                child: Image.asset(
+                  'lib\\assets\\images\\retail-pos.jpg',
+                  width: 400,
+                  height: 400,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
