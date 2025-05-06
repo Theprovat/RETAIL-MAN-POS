@@ -1,7 +1,44 @@
 import 'package:flutter/material.dart';
 
-class RegistrationScreen extends StatelessWidget {
+class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
+
+  @override
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
+}
+
+class _RegistrationScreenState extends State<RegistrationScreen> {
+  String selectedCountry = 'India';
+  bool agreeToTerms = false;
+
+  final List<String> countries = [
+    'India',
+    'United States',
+    'United Kingdom',
+    'Canada',
+    'Australia',
+    'Germany',
+    'France',
+    'Japan',
+    'China',
+    'Brazil',
+    'Russia',
+    'South Africa',
+    'New Zealand',
+    'Mexico',
+    'Italy',
+    'Spain',
+    'Netherlands',
+    'Singapore',
+    'Indonesia',
+    'Malaysia',
+    'Thailand',
+    'Philippines',
+    'Bangladesh',
+    'Pakistan',
+    'Sri Lanka',
+    'Nepal',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -43,44 +80,48 @@ class RegistrationScreen extends StatelessWidget {
                 labelText: 'Country',
                 border: OutlineInputBorder(),
               ),
-              value: 'India',
-              items: <String>['India'].map((String value) {
+              value: selectedCountry,
+              items: countries.map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Row(
-                    children: [
-                      const Text('🇮🇳 '), // You might want to use a proper flag icon/widget
-                      Text(value),
-                    ],
-                  ),
+                  child: Text(value),
                 );
               }).toList(),
               onChanged: (String? newValue) {
-                // Handle country selection
+                if (newValue != null) {
+                  setState(() {
+                    selectedCountry = newValue;
+                  });
+                }
               },
             ),
             const SizedBox(height: 16.0),
             Row(
               children: <Widget>[
                 Checkbox(
-                  value: false,
+                  value: agreeToTerms,
                   onChanged: (bool? newValue) {
-                    // Handle terms and conditions agreement
+                    setState(() {
+                      agreeToTerms = newValue ?? false;
+                    });
                   },
                 ),
                 const Expanded(
                   child: Text(
-                    'I agree to Loyverse Terms of Use and have read and acknowledged Privacy Policy',
+                    'I agree to Retail-Man Terms of Use and have read and acknowledged Privacy Policy',
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 24.0),
             ElevatedButton(
-              onPressed: () {
-                // Handle registration logic
-                print('Sign Up button pressed');
-              },
+              onPressed: agreeToTerms
+                  ? () {
+                      // Handle registration logic
+                      print('Sign Up button pressed');
+                      print('Country: $selectedCountry');
+                    }
+                  : null,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.greenAccent,
                 padding: const EdgeInsets.symmetric(vertical: 16.0),

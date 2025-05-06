@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -36,6 +35,7 @@ class _CreateItemScreenState extends State<CreateItemScreen> {
   final TextEditingController costController = TextEditingController();
   final TextEditingController skuController = TextEditingController(text: "10000");
   final TextEditingController barcodeController = TextEditingController();
+  final TextEditingController stockController = TextEditingController();
 
   Future<void> pickImage(ImageSource source) async {
     final picker = ImagePicker();
@@ -125,6 +125,18 @@ class _CreateItemScreenState extends State<CreateItemScreen> {
               value: trackStock,
               onChanged: (value) => setState(() => trackStock = value),
             ),
+            if (trackStock) ...[
+              const SizedBox(height: 16),
+              const Text("Stock Quantity"),
+              TextField(
+                controller: stockController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter available stock',
+                ),
+              ),
+            ],
 
             const Divider(height: 32),
             const Text("Representation on POS", style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold)),
