@@ -1,0 +1,19 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
+import '../models/system.dart';
+
+class ShipmentApi extends Api {
+  //get sell by shipment status
+  getSellByShipmentStatus(String status, String date) async {
+    String url = this.apiUrl + "status";
+    var token = await System().getToken();
+    var response = [];
+    await http
+        .get(Uri.parse(url), headers: this.getHeader('$token'))
+        .then((value) {
+      response = jsonDecode(value.body)['data'];
+    });
+    return response;
+  }
